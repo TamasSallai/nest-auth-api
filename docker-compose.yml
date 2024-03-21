@@ -2,6 +2,23 @@ version: '3.4'
 
 services:
   app:
+    build:
+      context: .
+      target: builder
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb
+      - REDIS_URL=redis://redis:6379
+    command: 'npm run start:migrate:dev'
 
   postgres:
     image: postgres:16
