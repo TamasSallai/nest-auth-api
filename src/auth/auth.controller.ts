@@ -99,7 +99,7 @@ export class AuthController {
       return res.redirect(`myapp://auth?token=token`) // To be implemented
     }
 
-    return res.redirect('http://localhost:5713/signin')
+    return res.redirect('http://localhost:5173/signin')
   }
 
   @Get('/github/login')
@@ -115,6 +115,6 @@ export class AuthController {
       return res.redirect(`myapp://auth?token=token`) // To be implemented
     }
 
-    return res.redirect('http://localhost:5713/signin')
+    return res.redirect('http://localhost:5173/signin')
   }
 }
