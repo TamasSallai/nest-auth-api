@@ -16,6 +16,7 @@ services:
     env_file:
       - .env
     environment:
+      - NODE_ENV=development
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb
       - REDIS_URL=redis://redis:6379
     command: 'npm run start:migrate:dev'
