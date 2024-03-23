@@ -14,12 +14,17 @@ async function bootstrap() {
     cors:
       process.env.NODE_ENV === 'development'
         ? {
-            origin: 'http://localhost:5713',
+            origin: 'http://localhost:5173',
             credentials: true,
           }
         : false,
   })
-  app.useGlobalPipes(new ValidationPipe({ transform: true }))
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
+  )
   app.setGlobalPrefix('api')
   app.use(
     session({
